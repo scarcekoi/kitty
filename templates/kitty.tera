@@ -3,7 +3,8 @@ whiskers:
   version: "^2.2.0"
   matrix:
     - flavor
-  filename: "themes/{{ flavor.identifier }}.conf"
+    - accent
+  filename: "themes/{{ flavor.identifier }}/{{ flavor.identifier }}-{{ accent }}.conf"
 ---
 # vim:ft=kitty
 
@@ -43,7 +44,7 @@ macos_titlebar_color system
 
 # Tab bar colors
 active_tab_foreground   #{% if flavor.dark %}{{ crust.hex }}{% else %}{{ base.hex }}{% endif %}
-active_tab_background   #{{ mauve.hex }}
+active_tab_background   #{{ flavor.colors[accent].hex }}
 inactive_tab_foreground #{{ text.hex }}
 inactive_tab_background #{% if flavor.dark %}{{ mantle.hex }}{% else %}{{ overlay0.hex }}{% endif %}
 tab_bar_background      #{% if flavor.dark %}{{ crust.hex }}{% else %}{{ surface1.hex }}{% endif %}
@@ -52,7 +53,7 @@ tab_bar_background      #{% if flavor.dark %}{{ crust.hex }}{% else %}{{ surface
 mark1_foreground #{{ base.hex }}
 mark1_background #{{ lavender.hex }}
 mark2_foreground #{{ base.hex }}
-mark2_background #{{ mauve.hex }}
+mark2_background #{{ flavor.colors[accent].hex }}
 mark3_foreground #{{ base.hex }}
 mark3_background #{{ sapphire.hex }}
 
